@@ -1,0 +1,129 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 20px;
+    scroll-behavior: smooth;
+    font-weight: 300;
+  }
+  
+.bg {
+background-image: url("src/images.webp");
+height: 100%; 
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+}
+#ins{
+  line-height: 145%;
+  width: 70%;
+  margin-left: 15%;
+  color:#555555;
+}
+
+#logo{
+    width: 200px;
+    height: 200px;
+}
+
+hr{
+  border: 1px solid #09c1c1;
+  background-color:#09c1c1;
+  width: 20%;
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 180%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+.abc{
+    text-transform: uppercase;
+}
+.top-button{
+  background-color: rgba(9, 193, 193, 0.3);
+  color: #09c1c1;
+  font-size: 20px;   
+  padding: 8px 15px;
+  cursor: pointer;
+  border: 2px solid #09c1c1;
+  border-radius: 25px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: default;
+  text-decoration: none;
+}
+.top-button:hover{
+    background-color: #09c1c1;
+    color: white;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #09c1c1;
+    border-radius: 25px;
+    text-align: center;
+    cursor: default;
+  }
+
+  .top-button:active{
+    background-color: #0f9bc1;
+    color: white;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #0f9bc1;
+    border-radius: 25px;
+    text-align: center;
+    cursor: default;
+  }
+
+.nestedsection{
+    background-color: rgba(20, 20, 20, 0.5);
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.inner-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.nestedsection2{
+  background-color: rgba(200, 200, 200, 0.25);
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.colorButton
+{
+  background-color: rgba(9, 193, 193, 0.3);
+  color: #09c1c1;
+  font-size: 20px;   
+  padding: 8px 15px;
+  cursor: pointer;
+  border: 2px solid #09c1c1;
+  border-radius: 25px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: default;
+}
+
+#profile-img
+{
+  border: 2px solid #09c1c1;
+  box-shadow: 0 4px 8px 0 rgba(8,162,193, 0.2), 0 6px 20px 0 rgba(8,162,193, 0.19) inset;
+}
