@@ -20,7 +20,7 @@ background-attachment: fixed;
   line-height: 145%;
   width: 70%;
   margin-left: 15%;
-  color:#555555;
+  color:#eeeeee;
 }
 
 #logo{
@@ -37,7 +37,7 @@ hr{
 h1{
     margin-top: 0;
     margin-bottom: 10px;
-    color: white;
+    color: #aaa89d;
     font-size: 180%;
     word-spacing: 4px;
     letter-spacing: 1px;
@@ -98,14 +98,6 @@ h1{
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-
-.nestedsection2{
-  background-color: rgba(200, 200, 200, 0.25);
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .colorButton

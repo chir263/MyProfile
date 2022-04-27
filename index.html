@@ -46,10 +46,10 @@
             margin-left: 3%;
             margin-bottom: 5px;
             padding: 10px;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid #3d3e40;
+            color: #eeeeee;
             /* border-radius: 25px; */
-            background-color: rgb(65, 65, 65);
+            background-color: #3d3e40;
             transition: 0.7s;
         }
 
@@ -57,7 +57,7 @@
             border: 2px solid rgb(65, 65, 65);
             transition: 0.7s;
             border: 2px solid #09c1c1;
-            color: white;
+            color: #eeeeee;
             /* border-radius: 25px; */
             background-color: #09c1c1;
         }
@@ -66,7 +66,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) inset;
             border: 2px solid rgb(65, 65, 65);
             transition: 0.7s;
-            color: white;
+            color: #eeeeee;
             /* border-radius: 25px; */
             background-color: #08a2c1;
         }
@@ -76,6 +76,7 @@
 
 <body>
     <script>
+        document.body.style.background = '#28282b';
         if (localStorage.getItem("NUM_NEWS") == null)
             localStorage.setItem("NUM_NEWS", 0);
         // else
@@ -99,6 +100,7 @@
                 <br>
                 <a class="top-button" href="#about-me">About Me</a>
                 <a class="top-button" href="#my-profile">My Profile</a>
+                <a class="top-button" href="#news-section">News</a>
             </div>
         </div>
     </div>
@@ -106,7 +108,7 @@
     <div id="about-me">
         <br>
         <center>
-            <h1 class="abc" style="color: #555555;font-size: 40px;">ABOUT ME</h1>
+            <h1 class="abc" style="color: #aaa89d;font-size: 40px;">ABOUT ME</h1>
         </center>
         <hr>
         <p id="ins">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi et, vel officia ipsam quibusdam,
@@ -133,13 +135,13 @@
     <br>
     <br>
     <div id="first-section" style="height:40%" class="bg">
-        <div class="nestedsection2">
+        <div class="nestedsection">
         </div>
     </div>
     <div id="my-profile">
         <br>
         <center>
-            <h1 class="abc" style="color: #555555;font-size: 40px;">My Profile</h1>
+            <h1 class="abc" style="color: #aaa89d;font-size: 40px;">My Profile</h1>
         </center>
         <hr>
         <br>
@@ -213,7 +215,17 @@
     <br>
     <center>
         <h1 style="color:rgba(0,0,0,0); user-select: none;">CHANGE COLOR</h1>
-        <h1 style="color:#555555;">CHANGE COLOR</h1>
+        
+        <h1 style="color:#aaa89d;">NEWS UPDATE</h1>
+        <hr>
+        <br>
+        <textarea id="news-update" class="top-button" style="text-align: left;" rows="4" cols="50"
+            placeholder="Type anything..."></textarea>
+        <br><button class="top-button" onclick="addNews()">Add</button>
+        <br>
+        <br>
+        <br>
+        <h1 style="color:#aaa89d;">CHANGE COLOR</h1>
         <hr>
         <br>
         <button class="colorButton">Blue</button>
@@ -226,34 +238,31 @@
         <button class="colorButton">Brown</button>
         <button class="colorButton">Gray</button>
         <button class="colorButton">White</button>
+        <button class="top-button" onclick="document.body.style.background = '#28282b';">Default</button>
+
         <br>
         <br>
         <button class="top-button" onclick="trigger()">Enjoy!</button>
         <br>
         <br>
-        <h1 style="color:#555555;">LINKS</h1>
+        <br>
+        <h1 style="color:#aaa89d;">LINKS</h1>
         <hr>
         <br>
         <a class="top-button" href="https://www.google.com" target="_blank">Google</a>
         <a class="top-button" href="src/images.webp" target="_blank">Image</a>
         <br>
         <br>
-        <h1 style="color:#555555;">FONT</h1>
+        <br>
+        <h1 style="color:#aaa89d;">FONT</h1>
         <hr>
         <br>
-        <h1 id="fontText" style="color:#555555;font-size: 20px;">TEST FONT SIZE</h1>
+        <h1 id="fontText" style="color:#aaa89d;font-size: 20px;">TEST FONT SIZE</h1>
         <br>
         <button class="top-button" onclick="changeFont('12px')">12px</button>
         <button class="top-button" onclick="changeFont('24px')">24px</button>
         <button class="top-button" onclick="changeFont('36px')">36px</button>
-        <br>
-        <br>
-        <h1 style="color:#555555;">NEWS UPDATE</h1>
-        <hr>
-        <br>
-        <textarea id="news-update" class="top-button" style="text-align: left;" rows="4" cols="50"
-            placeholder="Type anything..."></textarea>
-        <br><button class="top-button" onclick="addNews()">Add</button>
+        
 
     </center>
     <br>
@@ -304,7 +313,7 @@
         function trigger() {
             if (flag == false) {
                 flag = true;
-                document.body.style.background = 'white';
+                document.body.style.background = '#28282b';
                 clearInterval(timerF);
                 x.pause();
             }
@@ -322,14 +331,11 @@
             else {
                 const d = new Date();
                 let data = (d) + "@#@" + text;
-                //alert(data)
                 let ind = parseInt(localStorage.getItem("NUM_NEWS")) + 1;
                 let key_val = "NEWS_ID_" + ind;
-                //alert(key_val)
                 localStorage.setItem("NUM_NEWS", ind);
                 localStorage.setItem(key_val, data);
                 alert("News Added Successfully at " + d)
-                location.reload();
                 window.open((window.location.href).split('#')[0] + "#news-section" , "_self")
             }
         }
