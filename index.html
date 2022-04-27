@@ -191,7 +191,7 @@
             <center>
                 <h2 id="news-section">News</h2>
             </center>
-            <ul >
+            <ul>
                 <script>
                     let num = parseInt(localStorage.getItem("NUM_NEWS"))
                     for (i = 1; i <= num; i++) {
@@ -215,7 +215,7 @@
     <br>
     <center>
         <h1 style="color:rgba(0,0,0,0); user-select: none;">CHANGE COLOR</h1>
-        
+
         <h1 style="color:#aaa89d;">NEWS UPDATE</h1>
         <hr>
         <br>
@@ -242,7 +242,7 @@
 
         <br>
         <br>
-        <button class="top-button" onclick="trigger()">Enjoy!</button>
+        <button class="top-button" id="enjoy" onclick="trigger()">Enjoy!</button>
         <br>
         <br>
         <br>
@@ -262,7 +262,7 @@
         <button class="top-button" onclick="changeFont('12px')">12px</button>
         <button class="top-button" onclick="changeFont('24px')">24px</button>
         <button class="top-button" onclick="changeFont('36px')">36px</button>
-        
+
 
     </center>
     <br>
@@ -302,11 +302,16 @@
 
         let flag = true;
         let timerF = undefined;
-        let i = 0;
+        let i = 0, j = 0;
         let arr = ['blue', 'red', 'green', 'orange', 'purple', 'grey', 'pink', 'brown', 'yellow'];
-
+        let arr2 = ['12px', '24px', '36px', '24px']
+        var h1Elements = document.getElementsByTagName("h1");
         function myTimer() {
             document.body.style.background = arr[i % arr.length];
+            for (var k = 0; k < h1Elements.length; k++) {
+                h1Elements[k].style.fontSize = arr2[j % arr2.length];
+            }
+            j += 1;
             i += 1;
         }
         var x = document.getElementById("myAudio");
@@ -314,6 +319,10 @@
             if (flag == false) {
                 flag = true;
                 document.body.style.background = '#28282b';
+                for (var k = 0; k < h1Elements.length; k++) {
+                    h1Elements[k].style.fontSize = '36px';
+                }
+
                 clearInterval(timerF);
                 x.pause();
             }
@@ -336,7 +345,7 @@
                 localStorage.setItem("NUM_NEWS", ind);
                 localStorage.setItem(key_val, data);
                 alert("News Added Successfully at " + d)
-                window.open((window.location.href).split('#')[0] + "#news-section" , "_self")
+                window.open((window.location.href).split('#')[0] + "#news-section", "_self")
             }
         }
     </script>
