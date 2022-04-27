@@ -10,7 +10,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             margin-top: 10px;
             text-transform: uppercase;
-            padding: 5%;
+            padding: 25px;
             margin-bottom: 10px;
             color: white;
             background-color: #09c1c1;
@@ -23,7 +23,6 @@
         }
 
         h2:hover {
-            padding: 5%;
             margin-bottom: 10px;
             color: #09c1c1;
             background-color: rgb(65, 65, 65);
@@ -33,7 +32,6 @@
         }
 
         h2:active {
-            padding: 5%;
             margin-bottom: 10px;
             color: white;
             background-color: rgb(100, 100, 100);
@@ -44,6 +42,8 @@
             cursor: default;
             list-style-type: none;
             margin-top: 5px;
+            margin-right: 5%;
+            margin-left: 3%;
             margin-bottom: 5px;
             padding: 10px;
             border: 2px solid white;
@@ -58,7 +58,7 @@
             transition: 0.7s;
             border: 2px solid #09c1c1;
             color: white;
-            border-radius: 25px;
+            /* border-radius: 25px; */
             background-color: #09c1c1;
         }
 
@@ -67,7 +67,7 @@
             border: 2px solid rgb(65, 65, 65);
             transition: 0.7s;
             color: white;
-            border-radius: 25px;
+            /* border-radius: 25px; */
             background-color: #08a2c1;
         }
     </style>
@@ -75,6 +75,12 @@
 
 
 <body>
+    <script>
+        if (localStorage.getItem("NUM_NEWS") == null)
+            localStorage.setItem("NUM_NEWS", 0);
+        // else
+        //     alert(localStorage.getItem("NUM_NEWS"))
+    </script>
     <a class="top-button" style="position: fixed; 
     bottom: 20px; 
     right: 30px;
@@ -137,7 +143,7 @@
         </center>
         <hr>
         <br>
-        <div style="float: left; width: 25%;">
+        <div style="float: left; width: 33.3%;">
             <center>
                 <h2>Educational Background</h2>
             </center>
@@ -152,7 +158,7 @@
                 <li>Harum, aspernatur.</li>
             </ul>
         </div>
-        <div style="float: left; width: 25%;">
+        <div style="float: left; width: 33.3%;">
             <center>
                 <h2>Achievements</h2>
             </center>
@@ -165,7 +171,7 @@
                 <li>exercitationem</li>
             </ul>
         </div>
-        <div style="float: left; width: 25%;">
+        <div style="float: left; width: 33.3%;">
             <center>
                 <h2>Skills</h2>
             </center>
@@ -179,19 +185,24 @@
                 <li>exercitationem</li>
             </ul>
         </div>
-        <div style="float: left; width: 25%;">
+        <div style="float: left; width: 100%;">
             <center>
-                <h2>News</h2>
+                <h2 id="news-section">News</h2>
             </center>
-            <ul>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, aspernatur.</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus tenetur exercitationem est omnis
-                    deserunt aspernatur.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor. Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor.</li>
+            <ul >
+                <script>
+                    let num = parseInt(localStorage.getItem("NUM_NEWS"))
+                    for (i = 1; i <= num; i++) {
+                        let key_val = "NEWS_ID_" + i;
+                        let data = localStorage.getItem(key_val).split('@#@');
+                        document.writeln("<li>");
+                        document.writeln("<p style='font-size:80%; margin-bottom:5px;margin-top:0px; color:#09c1c1'>");
+                        document.writeln(data[0]);
+                        document.writeln("</p>")
+                        document.writeln(data[1]);
+                        document.writeln("</li>");
+                    }
+                </script>
             </ul>
         </div>
 
@@ -201,6 +212,7 @@
     <br>
     <br>
     <center>
+        <h1 style="color:rgba(0,0,0,0); user-select: none;">CHANGE COLOR</h1>
         <h1 style="color:#555555;">CHANGE COLOR</h1>
         <hr>
         <br>
@@ -234,13 +246,21 @@
         <button class="top-button" onclick="changeFont('12px')">12px</button>
         <button class="top-button" onclick="changeFont('24px')">24px</button>
         <button class="top-button" onclick="changeFont('36px')">36px</button>
+        <br>
+        <br>
+        <h1 style="color:#555555;">NEWS UPDATE</h1>
+        <hr>
+        <br>
+        <textarea id="news-update" class="top-button" style="text-align: left;" rows="4" cols="50"
+            placeholder="Type anything..."></textarea>
+        <br><button class="top-button" onclick="addNews()">Add</button>
 
     </center>
     <br>
     <br>
     <audio id="myAudio">
         <source src="src/audio.mp3" type="audio/mpeg">
-      </audio>
+    </audio>
     <script>
         function changeFont(size) {
             document.getElementById("fontText").style.fontSize = size;
@@ -280,7 +300,7 @@
             document.body.style.background = arr[i % arr.length];
             i += 1;
         }
-        var x = document.getElementById("myAudio"); 
+        var x = document.getElementById("myAudio");
         function trigger() {
             if (flag == false) {
                 flag = true;
@@ -291,7 +311,26 @@
             else if (flag == true) {
                 flag = false;
                 timerF = setInterval(myTimer, 100);
-                x.play(); 
+                x.play();
+            }
+        }
+        function addNews() {
+            let text = document.getElementById("news-update").value;
+            if (text == "") {
+                alert("Type Something...")
+            }
+            else {
+                const d = new Date();
+                let data = (d) + "@#@" + text;
+                //alert(data)
+                let ind = parseInt(localStorage.getItem("NUM_NEWS")) + 1;
+                let key_val = "NEWS_ID_" + ind;
+                //alert(key_val)
+                localStorage.setItem("NUM_NEWS", ind);
+                localStorage.setItem(key_val, data);
+                alert("News Added Successfully at " + d)
+                location.reload();
+                window.open((window.location.href).split('#')[0] + "#news-section" , "_self")
             }
         }
     </script>
