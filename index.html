@@ -48,7 +48,7 @@
             padding: 10px;
             border: 2px solid white;
             color: white;
-            border-radius: 25px;
+            /* border-radius: 25px; */
             background-color: rgb(65, 65, 65);
             transition: 0.7s;
         }
@@ -216,6 +216,9 @@
         <button class="colorButton">White</button>
         <br>
         <br>
+        <button class="top-button" onclick="trigger()">Enjoy!</button>
+        <br>
+        <br>
         <h1 style="color:#555555;">LINKS</h1>
         <hr>
         <br>
@@ -235,9 +238,11 @@
     </center>
     <br>
     <br>
+    <audio id="myAudio">
+        <source src="src/audio.mp3" type="audio/mpeg">
+      </audio>
     <script>
-        function changeFont(size)
-        {
+        function changeFont(size) {
             document.getElementById("fontText").style.fontSize = size;
         }
         const colorButtons = [...document.querySelectorAll('.colorButton')];
@@ -264,6 +269,31 @@
             if (!colorButtons.includes(e.target)) return;
             e.target.style.background = "#09c1c1";
         });
+
+
+        let flag = true;
+        let timerF = undefined;
+        let i = 0;
+        let arr = ['blue', 'red', 'green', 'orange', 'purple', 'grey', 'pink', 'brown', 'yellow'];
+
+        function myTimer() {
+            document.body.style.background = arr[i % arr.length];
+            i += 1;
+        }
+        var x = document.getElementById("myAudio"); 
+        function trigger() {
+            if (flag == false) {
+                flag = true;
+                document.body.style.background = 'white';
+                clearInterval(timerF);
+                x.pause();
+            }
+            else if (flag == true) {
+                flag = false;
+                timerF = setInterval(myTimer, 100);
+                x.play(); 
+            }
+        }
     </script>
 </body>
 
